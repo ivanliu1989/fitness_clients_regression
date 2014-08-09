@@ -1,0 +1,50 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+8    /* simple linear regression */
+9    ods listing close;
+10   ods pdf file =
+10 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+10 ! .pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_l
+      r.pdf", printer "PDF".
+11   
+12   proc reg data=reg.b_fitness;
+NOTE: Writing HTML Body file: sashtml.htm
+ERROR: Libname REG is not assigned.
+13      model oxygen_consumption=performance;
+ERROR: No data set open to look up variables.
+ERROR: No data set open to look up variables.
+NOTE: The previous statement has been deleted.
+14      title 'Simple Linear Regression of Oxygen Consumption '
+15            'and Performance';
+16   run;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.27 seconds
+      cpu time            0.17 seconds
+      
+
+17   quit;
+
+18   /* create library Fitness */
+19   libname fitness
+19 ! "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression";
+NOTE: Libref FITNESS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression
+20   run;
+21   
+22   /* redirect log to handle the log limitations */
+23   proc printto
+23 ! log="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\on
+23 ! e_reg.log";
+24   run;
+

@@ -1,0 +1,283 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+25   
+26   /* simple linear regression */
+27   ods listing close;
+28   ods pdf file =
+28 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+28 ! .pdf';
+29   
+30   proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+31      model oxygen_consumption=performance;
+32      title 'Simple Linear Regression of Oxygen Consumption '
+33            'and Performance';
+34   run;
+
+35   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           2.05 seconds
+      cpu time            0.60 seconds
+      
+
+36   
+37   /* simple linear regression */
+38   ods listing close;
+39   ods pdf file =
+39 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+39 ! .pdf';
+40   
+41   proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+42      model oxygen_consumption=performance;
+43      title 'Simple Linear Regression of Oxygen Consumption '
+44            'and Performance';
+45   run;
+
+46   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.89 seconds
+      cpu time            0.32 seconds
+      
+
+47   
+48   ods pdf close;
+NOTE: ODS PDF printed 8 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+      .pdf.
+49   
+50   ods listing;
+51   
+52   data need_predictions;
+53      input performance @@;
+54      datalines;
+
+NOTE: SAS went to a new line when INPUT statement reached past the end of a line.
+NOTE: The data set WORK.NEED_PREDICTIONS has 5 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+56   ;
+57   run;
+58   
+59   data predoxy;
+60      set reg.b_fitness
+61          need_predictions;
+ERROR: Libname REG is not assigned.
+62   run;
+
+NOTE: The SAS System stopped processing this step because of errors.
+WARNING: The data set WORK.PREDOXY may be incomplete.  When this step was stopped there were 0 
+         observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+63   
+64   data predoxy;
+65      set fitness.b_fitness
+66          need_predictions;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+67   run;
+
+NOTE: There were 31 observations read from the data set FITNESS.B_FITNESS.
+NOTE: There were 5 observations read from the data set WORK.NEED_PREDICTIONS.
+NOTE: The data set WORK.PREDOXY has 36 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+68   proc reg data=predoxy;
+69      model oxygen_consumption=performance / p;
+70      id performance;
+71      title 'Oxygen_Consumption=Performance with Predicted Values';
+72   run;
+
+73   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.00 seconds
+      cpu time            0.43 seconds
+      
+
+74   
+75   proc reg data=predoxy;
+76      model oxygen_consumption=performance / clm cli alpha=.05;
+77      id name performance;
+78      plot oxygen_consumption*performance / conf pred;
+79      symbol1 c=red v=dot;
+80      symbol2 c=red;
+81      symbol3 c=blue;
+82      symbol4 c=blue;
+83      symbol5 c=green;
+84      symbol6 c=green;
+85      title;
+86   run;
+
+NOTE: 6 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9940_IVAN_LIU_\reg.png.
+87   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           2.23 seconds
+      cpu time            1.04 seconds
+      
+
+88   /* create library Fitness */
+89   libname fitness
+89 ! "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression";
+NOTE: Libref FITNESS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression
+90   run;
+91   
+92   /* redirect log to handle the log limitations */
+93   proc printto
+93 ! log="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\on
+93 ! e_reg.log";
+94   run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+95   
+96   /* simple linear regression */
+97   ods listing close;
+98   ods pdf file =
+98 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+98 ! .pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_l
+      r.pdf", printer "PDF".
+99   
+100  proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+101     model oxygen_consumption=performance;
+102     title 'Simple Linear Regression of Oxygen Consumption '
+103           'and Performance';
+104  run;
+
+105  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.07 seconds
+      cpu time            0.40 seconds
+      
+
+106  
+107  ods pdf close;
+NOTE: ODS PDF printed 4 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+      .pdf.
+108  
+109  /* 2.Pridiction and confidence interval */
+110  ods pdf file =
+110! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\prid_c
+110! onf.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\prid_
+      conf.pdf", printer "PDF".
+111  
+112  data need_predictions;
+113     input performance @@;
+114     datalines;
+
+NOTE: SAS went to a new line when INPUT statement reached past the end of a line.
+NOTE: The data set WORK.NEED_PREDICTIONS has 5 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+116  ;
+117  run;
+118  
+119  data predoxy;
+120     set fitness.b_fitness
+121         need_predictions;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+122  run;
+
+NOTE: There were 31 observations read from the data set FITNESS.B_FITNESS.
+NOTE: There were 5 observations read from the data set WORK.NEED_PREDICTIONS.
+NOTE: The data set WORK.PREDOXY has 36 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+123  
+124  proc reg data=predoxy;
+125     model oxygen_consumption=performance / p;
+126     id performance;
+127     title 'Oxygen_Consumption=Performance with Predicted Values';
+128  run;
+
+129  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.89 seconds
+      cpu time            0.40 seconds
+      
+
+130  
+131  
+132  options ps=50 ls=76;
+133  goptions reset=all fontres=presentation ftext=swissb htext=1.5;
+134  
+135  proc reg data=predoxy;
+136     model oxygen_consumption=performance / clm cli alpha=.05;
+137     id name performance;
+138     plot oxygen_consumption*performance / conf pred;
+139     symbol1 c=red v=dot;
+140     symbol2 c=red;
+141     symbol3 c=blue;
+142     symbol4 c=blue;
+143     symbol5 c=green;
+144     symbol6 c=green;
+145     title;
+146  run;
+
+NOTE: Graph's name, REG, changed to REG1. REG is already used or not a 
+      valid SAS name.
+NOTE: 5 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD9940_IVAN_LIU_\reg1.png.
+147  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.33 seconds
+      cpu time            0.53 seconds
+      
+
+148  ods pdf close;
+NOTE: ODS PDF printed 13 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+      s_regression\prid_conf.pdf.
+149  ods listing;
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           12:21.91
+      cpu time            38.96 seconds
+      
