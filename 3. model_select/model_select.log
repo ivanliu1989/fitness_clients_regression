@@ -1,0 +1,72 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+8    
+9    /* Model selection by all_reg, forward, backward and stepwise */
+10   ods listing close;
+11   ods pdf file =
+11 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\model_
+11 ! select.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\model
+      _select.pdf", printer "PDF".
+12   
+13   proc reg data=fitness.b_fitness;
+NOTE: Writing HTML Body file: sashtml.htm
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+14      title h=2 'Best=4 Models Using All Regression Option';
+15   
+16      ALL_REG: model oxygen_consumption
+17                       = performance runtime age weight
+18                         run_pulse rest_pulse maximum_pulse
+19               / selection=rsquare adjrsq cp best=4;
+20      plot cp.*np. /
+21           nomodel nostat
+22           vaxis=0 to 30 by 5
+23           haxis=2 to 7 by 1 /* p=0,p=1 do not add information */
+24           cmallows=red
+25           chocking=blue;
+26      symbol v=plus color=green h=2;
+27   
+28      title 'Stepwise Regression Methods';
+29   
+30      FORWARD: model oxygen_consumption
+31                       = performance runtime age weight
+32                         run_pulse rest_pulse maximum_pulse
+33                       / selection=forward;
+34      BACKWARD: model oxygen_consumption
+35                       = performance runtime age weight
+36                         run_pulse rest_pulse maximum_pulse
+37                       / selection=backward;
+38      STEPWISE: model oxygen_consumption
+39                       = performance runtime age weight
+40                         run_pulse rest_pulse maximum_pulse
+41                       / selection=stepwise;
+42   
+43   
+44   run;
+
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD1828_IVAN_LIU_\reg.png.
+45   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           4.48 seconds
+      cpu time            1.56 seconds
+      
+
+46   
+47   ods pdf close;
+NOTE: ODS PDF printed 20 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\model_
+      select.pdf.
+48   ods listing;
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           5:38.36
+      cpu time            12.13 seconds
+      
