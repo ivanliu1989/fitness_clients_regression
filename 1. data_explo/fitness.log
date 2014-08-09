@@ -1,0 +1,1223 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+12   /* 1. Fit test (PP plot) */
+13   proc univariate data=fitness.b_fitness;
+NOTE: Writing HTML Body file: sashtml.htm
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+14       var Runtime -- Performance;
+15       histogram Runtime -- Performance / normal;
+16       probplot Runtime -- Performance
+17                / normal (mu=est sigma=est color=red w=2);
+18       title 'Univariate Statistics of sasuser.b_fitness';
+19   run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           4.00 seconds
+      cpu time            1.71 seconds
+      
+
+20   ods html
+20 ! file="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1
+20 ! .fit_test.html";
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1.fit_
+      test.html
+ERROR: A component of C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+       Files\_TD11232_IVAN_LIU_\C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness
+       _clients_regression\1.fit_test.html is not a directory.
+ERROR: No body file. HTML output will not be created.
+21   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+22       var Runtime -- Performance;
+23       histogram Runtime -- Performance / normal;
+24       probplot Runtime -- Performance
+25                / normal (mu=est sigma=est color=red w=2);
+26       title 'Univariate Statistics of sasuser.b_fitness';
+27   run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.37 seconds
+      cpu time            0.67 seconds
+      
+
+28   ods html close;
+29   ods html
+29 ! file="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1
+29 ! _fit_test.html";
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit_
+      test.html
+30   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+31       var Runtime -- Performance;
+32       histogram Runtime -- Performance / normal;
+33       probplot Runtime -- Performance
+34                / normal (mu=est sigma=est color=red w=2);
+35       title 'Univariate Statistics of sasuser.b_fitness';
+36   run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           2.59 seconds
+      cpu time            1.31 seconds
+      
+
+37   ods html close;
+38   ods listing close;
+39   ods html
+39 ! path="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1
+39 ! _fit_test.html"
+40            gpath="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_re
+40 ! gression\1_fit_test.html"
+41            file="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_reg
+41 ! ression\1_fit_test.html";
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit_
+      test.html
+ERROR: A component of 
+       C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit
+       _test.html\C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regre
+       ssion\1_fit_test.html is not a directory.
+ERROR: No body file. HTML output will not be created.
+42   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+43       var Runtime -- Performance;
+44       histogram Runtime -- Performance / normal;
+45       probplot Runtime -- Performance
+46                / normal (mu=est sigma=est color=red w=2);
+47       title 'Univariate Statistics of sasuser.b_fitness';
+48   run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+49   ods html close;
+50   ods listing close;
+51   ods html
+51 ! path="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1
+51 ! _fit_test.html"
+52            gpath="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_re
+52 ! gression\1_fit_test.html"
+53            file="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_reg
+53 ! ression\1_fit_test.html";
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit_
+      test.html
+ERROR: A component of 
+       C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit
+       _test.html\C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regre
+       ssion\1_fit_test.html is not a directory.
+ERROR: No body file. HTML output will not be created.
+54   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+55       var Runtime -- Performance;
+56       histogram Runtime -- Performance / normal;
+57       probplot Runtime -- Performance
+58                / normal (mu=est sigma=est color=red w=2);
+59       title 'Univariate Statistics of sasuser.b_fitness';
+60   run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+61   ods html close;
+62   /* 1. Fit test (PP plot) */
+63   ods listing close;
+64   ods html
+64 ! path="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\"
+64 !  (url=none)
+65            gpath="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_re
+65 ! gression\" (url=none)
+66            file="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_reg
+66 ! ression\1_fit_test.html";
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit_
+      test.html
+ERROR: A component of 
+       C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\C:\Us
+       ers\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\1_fit_test
+       .html is not a directory.
+ERROR: No body file. HTML output will not be created.
+67   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+68       var Runtime -- Performance;
+69       histogram Runtime -- Performance / normal;
+70       probplot Runtime -- Performance
+71                / normal (mu=est sigma=est color=red w=2);
+72       title 'Univariate Statistics of sasuser.b_fitness';
+73   run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+74   ods html close;
+75   ods listing close;
+76   ods html path="C:\" (url=none)
+77            gpath="C:\" (url=none)
+78            file="fitness_unistats.html";
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access C:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+79   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+80       var Runtime -- Performance;
+81       histogram Runtime -- Performance / normal;
+82       probplot Runtime -- Performance
+83                / normal (mu=est sigma=est color=red w=2);
+84       title 'Univariate Statistics of sasuser.b_fitness';
+85   run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+86   ods html close;
+87   ods listing;
+88   ods listing close;
+89   ods html path="C:\" (url=none)
+90            gpath="C:\" (url=none)
+91            file="fitness_unistats.html";
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access C:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+92   proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+93       var Runtime -- Performance;
+94       histogram Runtime -- Performance / normal;
+95       probplot Runtime -- Performance
+96                / normal (mu=est sigma=est color=red w=2);
+97       title 'Univariate Statistics of sasuser.b_fitness';
+98   run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+99   ods html close;
+100  ods listing;
+101  /* 1. Fit test (PP plot) */
+102  ods listing close;
+103  ods html path='c:\'  (url=none)
+104           gpath='c:\' (url=none)
+105           file = 'fitness_unistats.html';
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access c:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+106  
+107  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+108      var Runtime -- Performance;
+109      histogram Runtime -- Performance / normal;
+110      probplot Runtime -- Performance
+111               / normal (mu=est sigma=est color=red w=2);
+112      title 'Univariate Statistics of sasuser.b_fitness';
+113  run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+114  ods html close;
+115  ods listing;
+116  /* 1. Fit test (PP plot) */
+117  ods listing close;
+118  ods html path='c:\'  (url=none)
+119           gpath='c:\' (url=none)
+120           file =
+120! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+120! s_unistats.html';
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+      s_unistats.html
+ERROR: A component of 
+       c:\C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fi
+       tness_unistats.html is not a directory.
+ERROR: No body file. HTML output will not be created.
+121  
+122  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+123      var Runtime -- Performance;
+124      histogram Runtime -- Performance / normal;
+125      probplot Runtime -- Performance
+126               / normal (mu=est sigma=est color=red w=2);
+127      title 'Univariate Statistics of sasuser.b_fitness';
+128  run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+129  ods html close;
+130  ods listing;
+131  /* 1. Fit test (PP plot) */
+132  ods listing close;
+133  ods html file =
+133! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+133! s_unistats.html';
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+      s_unistats.html
+134  
+135  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+136      var Runtime -- Performance;
+137      histogram Runtime -- Performance / normal;
+138      probplot Runtime -- Performance
+139               / normal (mu=est sigma=est color=red w=2);
+140      title 'Univariate Statistics of sasuser.b_fitness';
+141  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.72 seconds
+      cpu time            0.93 seconds
+      
+
+142  ods html close;
+143  ods listing;
+144  /* 1. Fit test (PP plot) */
+145  ods listing close;
+146  ods html file =
+146! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+146! s_unistats.htm';
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+      s_unistats.htm
+147  
+148  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+149      var Runtime -- Performance;
+150      histogram Runtime -- Performance / normal;
+151      probplot Runtime -- Performance
+152               / normal (mu=est sigma=est color=red w=2);
+153      title 'Univariate Statistics of sasuser.b_fitness';
+154  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.61 seconds
+      cpu time            1.00 seconds
+      
+
+155  ods html close;
+156  ods listing;
+157  ods html file =
+157! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+157! s_unistats.htm';
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+      s_unistats.htm
+158  
+159  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+160      var Runtime -- Performance;
+161      histogram Runtime -- Performance / normal;
+162      probplot Runtime -- Performance
+163               / normal (mu=est sigma=est color=red w=2);
+164      title 'Univariate Statistics of sasuser.b_fitness';
+165  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           2.72 seconds
+      cpu time            1.50 seconds
+      
+
+166  ods html close;
+167  /* create library Fitness */
+168  libname fitness
+168! "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression";
+NOTE: Libref FITNESS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression
+169  run;
+170  
+171  /* redirect log to handle the log limitations */
+172  proc printto
+172! log="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fi
+172! tness.log";
+173  run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+174  
+175  /* 1. Fit test (PP plot) */
+176  ods listing close;
+177  ods html path='c:\'  (url=none)
+178           gpath='c:\' (url=none)
+179           file = 'fitness_unistats.html';
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access c:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+180  
+181  proc univariate data=fitness.b_fitness;
+NOTE: Writing HTML Body file: sashtml13.htm
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+182     var Runtime -- Performance;
+183     histogram Runtime -- Performance / normal;
+184     probplot  Runtime -- Performance
+185               / normal (mu=est sigma=est color=red w=2);
+186     title 'Univariate Statistics of sasuser.b_fitness';
+187  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.89 seconds
+      cpu time            1.17 seconds
+      
+
+188  
+189  ods html close;
+190  ods listing;
+191  ods listing close;
+192  ods html path='c:\'  (url=none)
+193           gpath='c:\' (url=none)
+194           file = 'fitness_unistats.html';
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access c:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+195  
+196  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+197     var Runtime -- Performance;
+198     histogram Runtime -- Performance / normal;
+199     probplot  Runtime -- Performance
+200               / normal (mu=est sigma=est color=red w=2);
+201     title 'Univariate Statistics of sasuser.b_fitness';
+202  run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+203  
+204  ods html close;
+205  ods listing;
+206  /* 1. Fit test (PP plot) */
+207  ods listing close;
+208  ods html path='c:\'  (url=none)
+209           gpath='c:\' (url=none)
+210           file = 'fitness_unistats.html';
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access c:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+211  
+212  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+213     var Runtime -- Performance;
+214     histogram Runtime -- Performance / normal;
+215     probplot  Runtime -- Performance
+216               / normal (mu=est sigma=est color=red w=2);
+217     title 'Univariate Statistics of sasuser.b_fitness';
+218  run;
+
+WARNING: No output destinations active.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+219  
+220  ods html close;
+221  ods listing;
+222  /* 1. Fit test (PP plot) */
+223  ods listing close;
+224  ods html path='c:\'  (url=none)
+225           gpath='c:\' (url=none)
+226           file = 'fitness_unistats.html';
+NOTE: Writing HTML Body file: fitness_unistats.html
+ERROR: Insufficient authorization to access c:\fitness_unistats.html.
+ERROR: No body file. HTML output will not be created.
+227  
+228  proc univariate data=fitness.b_fitness;
+NOTE: Writing HTML Body file: sashtml17.htm
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+229     var Runtime -- Performance;
+230     histogram Runtime -- Performance / normal;
+231     probplot  Runtime -- Performance
+232               / normal (mu=est sigma=est color=red w=2);
+233     title 'Univariate Statistics of sasuser.b_fitness';
+234  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.91 seconds
+      cpu time            1.17 seconds
+      
+
+235  
+236  ods html close;
+237  ods listing;
+238  /* 2.Scatter plot */
+239  options ps=50 ls=64;
+240  goptions reset=all gunit=pct border
+241           fontres=presentation ftext=swissb;
+242  
+243  axis1 length=70 w=3 color=blue label=(h=3) value=(h=3);
+244  axis2 length=70 w=3 color=blue label=(h=3) value=(h=3);
+245  
+246  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+247     plot oxygen_consumption * (runtime age weight run_pulse
+248          rest_pulse maximum_pulse performance)
+249          / vaxis=axis1 haxis=axis2;
+250     symbol1 v=dot h=2 w=4 color=red;
+251     title h=5 color=green 'Plot of Oxygen Consumption by
+251! Other Variables';
+252  run;
+
+WARNING: TITLE1 is too long. Height has been reduced to 70.29 
+         pct of specified or default size.
+WARNING: The bottom horizontal axis labeled Runtime was too 
+         large as specified. Specify LENGTH=55.4 .
+WARNING: The bottom horizontal axis labeled Age was too large 
+         as specified. Specify LENGTH=55.1 .
+WARNING: The bottom horizontal axis labeled Weight was too 
+         large as specified. Specify LENGTH=54.4 .
+WARNING: The bottom horizontal axis labeled Run_Pulse was too 
+         large as specified. Specify LENGTH=54.4 .
+WARNING: The bottom horizontal axis labeled Rest_Pulse was too 
+         large as specified. Specify LENGTH=55.1 .
+WARNING: The bottom horizontal axis labeled Maximum_Pulse was 
+         too large as specified. Specify LENGTH=54.1 .
+WARNING: The bottom horizontal axis labeled Performance was too 
+         large as specified. Specify LENGTH=55.4 .
+253  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.33 seconds
+      cpu time            0.29 seconds
+      
+
+254  /* 2.Scatter plot */
+255  options ps=50 ls=64;
+256  goptions reset=all gunit=pct border
+257           fontres=presentation ftext=swissb;
+258  
+259  axis1 length=70 w=3 color=blue label=(h=3) value=(h=3);
+260  axis2 length=70 w=3 color=blue label=(h=3) value=(h=3);
+261  
+262  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+263     plot oxygen_consumption * (runtime age weight run_pulse
+264          rest_pulse maximum_pulse performance)
+265          / vaxis=axis1 haxis=axis2;
+266     symbol1 v=dot h=2 w=4 color=red;
+267     title h=5 color=green 'Plot of Oxygen Consumption by
+267! Other Variables';
+268  run;
+
+269  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.12 seconds
+      
+
+270  /* 2.Scatter plot */
+271  options ps=50 ls=64;
+272  goptions reset=all gunit=pct border
+273           fontres=presentation ftext=swissb;
+274  
+275  axis1 length=70 w=3 color=blue label=(h=3) value=(h=3);
+276  axis2 length=70 w=3 color=blue label=(h=3) value=(h=3);
+277  
+278  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+279     plot oxygen_consumption * (runtime age weight run_pulse
+280          rest_pulse maximum_pulse performance)
+281          / vaxis=axis1 haxis=axis2;
+282     symbol1 v=dot h=2 w=4 color=red;
+283     title h=5 color=green 'Plot of Oxygen Consumption by
+283! Other Variables';
+284  run;
+
+NOTE: Writing HTML Body file: sashtml18.htm
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot14.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot15.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot16.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot17.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot18.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot19.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot20.png.
+285  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           1.36 seconds
+      cpu time            1.20 seconds
+      
+
+286  /* 2.Scatter plot */
+287  ods pdf file = 'fitness_unistats.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\fitness_unistats.pdf", 
+      printer "PDF".
+288  
+289  options ps=50 ls=64;
+290  goptions reset=all gunit=pct border
+291           fontres=presentation ftext=swissb;
+292  
+293  axis1 length=70 w=3 color=blue label=(h=3) value=(h=3);
+294  axis2 length=70 w=3 color=blue label=(h=3) value=(h=3);
+295  
+296  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+297     plot oxygen_consumption * (runtime age weight run_pulse
+298          rest_pulse maximum_pulse performance)
+299          / vaxis=axis1 haxis=axis2;
+300     symbol1 v=dot h=2 w=4 color=red;
+301     title h=5 color=green 'Plot of Oxygen Consumption by
+301! Other Variables';
+302  run;
+
+WARNING: TITLE1 is too long. Height has been reduced to 66.21 
+         pct of specified or default size.
+WARNING: The bottom horizontal axis labeled Runtime was too 
+         large as specified. Specify LENGTH=54.2 .
+WARNING: The bottom horizontal axis labeled Age was too large 
+         as specified. Specify LENGTH=53.9 .
+WARNING: The bottom horizontal axis labeled Weight was too 
+         large as specified. Specify LENGTH=53.1 .
+WARNING: The bottom horizontal axis labeled Run_Pulse was too 
+         large as specified. Specify LENGTH=53.1 .
+WARNING: The bottom horizontal axis labeled Rest_Pulse was too 
+         large as specified. Specify LENGTH=53.9 .
+WARNING: The bottom horizontal axis labeled Maximum_Pulse was 
+         too large as specified. Specify LENGTH=52.8 .
+WARNING: The bottom horizontal axis labeled Performance was too 
+         large as specified. Specify LENGTH=54.2 .
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot21.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot22.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot23.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot24.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot25.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot26.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot27.png.
+303  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.97 seconds
+      cpu time            0.92 seconds
+      
+
+304  
+305  ods pdf close;
+NOTE: ODS PDF printed 7 pages to 
+      C:\Users\Ivan.Liuyanfeng\fitness_unistats.pdf.
+306  /* 2.Scatter plot */
+307  ods pdf file =
+307! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+307! tness_clients_regression\fitness_unistats.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\fitness_unistats.pdf", 
+      printer "PDF".
+308  
+309  options ps=50 ls=64;
+310  goptions reset=all gunit=pct border
+311           fontres=presentation ftext=swissb;
+312  
+313  axis1 length=70 w=3 color=blue label=(h=3) value=(h=3);
+314  axis2 length=70 w=3 color=blue label=(h=3) value=(h=3);
+315  
+316  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+317     plot oxygen_consumption * (runtime age weight run_pulse
+318          rest_pulse maximum_pulse performance)
+319          / vaxis=axis1 haxis=axis2;
+320     symbol1 v=dot h=2 w=4 color=red;
+321     title h=5 color=green 'Plot of Oxygen Consumption by
+321! Other Variables';
+322  run;
+
+NOTE: Writing HTML Body file: sashtml19.htm
+WARNING: TITLE1 is too long. Height has been reduced to 66.21 
+         pct of specified or default size.
+WARNING: The bottom horizontal axis labeled Runtime was too 
+         large as specified. Specify LENGTH=54.2 .
+WARNING: The bottom horizontal axis labeled Age was too large 
+         as specified. Specify LENGTH=53.9 .
+WARNING: The bottom horizontal axis labeled Weight was too 
+         large as specified. Specify LENGTH=53.1 .
+WARNING: The bottom horizontal axis labeled Run_Pulse was too 
+         large as specified. Specify LENGTH=53.1 .
+WARNING: The bottom horizontal axis labeled Rest_Pulse was too 
+         large as specified. Specify LENGTH=53.9 .
+WARNING: The bottom horizontal axis labeled Maximum_Pulse was 
+         too large as specified. Specify LENGTH=52.8 .
+WARNING: The bottom horizontal axis labeled Performance was too 
+         large as specified. Specify LENGTH=54.2 .
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot28.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot29.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot30.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot31.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot32.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot33.png.
+NOTE: 1 records written to 
+      C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD11232_IVAN_LIU_\gplot34.png.
+323  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           1.35 seconds
+      cpu time            1.25 seconds
+      
+
+324  
+325  ods pdf close;
+NOTE: ODS PDF printed 7 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\fitness_unistats.pdf.
+326  /* 2.Scatter plot */
+327  ods html file =
+327! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+327! tness_clients_regression\scatter_plot.html';
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\scatter_plot.html
+ERROR: A component of 
+       C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+       Files\_TD11232_IVAN_LIU_\C:\Users\Ivan.Liuyanfeng\Desktop
+       \Data_Mining_Work_Space\Fitness_clients_regression\scatte
+       r_plot.html is not a directory.
+ERROR: No body file. HTML output will not be created.
+328  
+329  options ps=50 ls=64;
+330  goptions reset=all gunit=pct border
+331           fontres=presentation ftext=swissb;
+332  
+333  axis1 length=70 w=3 color=blue label=(h=3) value=(h=3);
+334  axis2 length=70 w=3 color=blue label=(h=3) value=(h=3);
+335  
+336  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+337     plot oxygen_consumption * (runtime age weight run_pulse
+338          rest_pulse maximum_pulse performance)
+339          / vaxis=axis1 haxis=axis2;
+340     symbol1 v=dot h=2 w=4 color=red;
+341     title h=5 color=green 'Plot of Oxygen Consumption by
+341! Other Variables';
+342  run;
+
+343  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.23 seconds
+      
+
+344  
+345  ods html close;
+346  ods html file =
+346! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+346! tness_clients_regression\scatter_plot.html';
+NOTE: Writing HTML Body file: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\scatter_plot.html
+347  
+348  options ps=50 ls=64;
+349  goptions reset=all gunit=pct border
+350           fontres=presentation ftext=swissb;
+351  
+352  axis1 length=50 w=2 color=blue label=(h=2) value=(h=2);
+353  axis2 length=50 w=2 color=blue label=(h=2) value=(h=2);
+354  
+355  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+356     plot oxygen_consumption * (runtime age weight run_pulse
+357          rest_pulse maximum_pulse performance)
+358          / vaxis=axis1 haxis=axis2;
+359     symbol1 v=dot h=2 w=4 color=red;
+360     title h=5 color=green 'Plot of Oxygen Consumption by
+360! Other Variables';
+361  run;
+
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot.png.
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot1.png.
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot2.png.
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot3.png.
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot4.png.
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot5.png.
+NOTE: 1 records written to C:\Users\Ivan.Liuyanfeng\gplot6.png.
+362  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.90 seconds
+      cpu time            0.87 seconds
+      
+
+363  
+364  ods html close;
+365  ods pdf file =
+365! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+365! tness_clients_regression\scatter_plot.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\scatter_plot.pdf", 
+      printer "PDF".
+366  
+367  options ps=20 ls=34;
+                   --
+                   18
+ERROR 18-12: Option value for SAS option LINESIZE must be 
+             between 64 and 256.
+368  goptions reset=all gunit=pct border
+369           fontres=presentation ftext=swissb;
+370  
+371  axis1 length=50 w=2 color=blue label=(h=2) value=(h=2);
+372  axis2 length=50 w=2 color=blue label=(h=2) value=(h=2);
+373  
+374  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+375     plot oxygen_consumption * (runtime age weight run_pulse
+376          rest_pulse maximum_pulse performance)
+377          / vaxis=axis1 haxis=axis2;
+378     symbol1 v=dot h=2 w=4 color=red;
+379     title h=5 color=green 'Plot of Oxygen Consumption by
+379! Other Variables';
+380  run;
+
+WARNING: TITLE1 is too long. Height has been reduced to 66.21 
+         pct of specified or default size.
+381  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.40 seconds
+      cpu time            0.39 seconds
+      
+
+382  
+383  ods pdf close;
+NOTE: ODS PDF printed 7 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\scatter_plot.pdf.
+384  /* create library Fitness */
+385  libname fitness
+385! "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+385! tness_clients_regression";
+NOTE: Libref FITNESS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression
+386  run;
+387  
+388  /* redirect log to handle the log limitations */
+389  proc printto
+389! log="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Spac
+389! e\Fitness_clients_regression\fitness.log";
+390  run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+391  
+392  /* 1. Fit test (PP plot) */
+393  ods listing close;
+394  ods pdf file =
+394! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+394! tness_clients_regression\fitness_unistats.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\fitness_unistats.pdf", 
+      printer "PDF".
+395  
+396  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+397     var Runtime -- Performance;
+398     histogram Runtime -- Performance / normal;
+399     probplot  Runtime -- Performance
+400               / normal (mu=est sigma=est color=red w=2);
+401     title 'Univariate Statistics of sasuser.b_fitness';
+402  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.23 seconds
+      cpu time            0.64 seconds
+      
+
+403  
+404  ods pdf close;
+NOTE: ODS PDF printed 40 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\fitness_unistats.pdf.
+405  ods listing;
+406  
+407  /* 2.Scatter plot */
+408  ods pdf file =
+408! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+408! tness_clients_regression\scatter_plot.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\scatter_plot.pdf", 
+      printer "PDF".
+409  
+410  options ps=20 ls=34;
+                   --
+                   18
+ERROR 18-12: Option value for SAS option LINESIZE must be 
+             between 64 and 256.
+411  goptions reset=all gunit=pct border
+412           fontres=presentation ftext=swissb;
+413  
+414  axis1 length=50 w=2 color=blue label=(h=2) value=(h=2);
+415  axis2 length=50 w=2 color=blue label=(h=2) value=(h=2);
+416  
+417  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+418     plot oxygen_consumption * (runtime age weight run_pulse
+419          rest_pulse maximum_pulse performance)
+420          / vaxis=axis1 haxis=axis2;
+421     symbol1 v=dot h=2 w=4 color=red;
+422     title h=5 color=green 'Plot of Oxygen Consumption by
+422! Other Variables';
+423  run;
+
+WARNING: TITLE1 is too long. Height has been reduced to 66.21 
+         pct of specified or default size.
+424  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.39 seconds
+      cpu time            0.39 seconds
+      
+
+425  
+426  ods pdf close;
+NOTE: ODS PDF printed 7 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\scatter_plot.pdf.
+427  /* 3.Correlation coefficient */
+428  ods pdf file =
+428! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+428! tness_clients_regression\correlation.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\correlation.pdf", printer "PDF".
+429  
+430  proc corr data=fitness.b_fitness rank;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+431     var runtime age weight run_pulse rest_pulse
+431! maximum_pulse
+432         performance;
+433     with oxygen_consumption;
+434     title 'PROC CORR: oxygen_consumption with predictor
+434! variables';
+435  run;
+
+NOTE: PROCEDURE CORR used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+436  
+437  ods pdf close;
+NOTE: ODS PDF printed 1 page to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\correlation.pdf.
+438  /* create library Fitness */
+439  libname fitness
+439! "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+439! tness_clients_regression";
+NOTE: Libref FITNESS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression
+440  run;
+441  
+442  /* redirect log to handle the log limitations */
+443  proc printto
+443! log="C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Spac
+443! e\Fitness_clients_regression\fitness.log";
+444  run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+445  
+446  /* 1. Fit test (PP plot) */
+447  ods listing close;
+448  ods pdf file =
+448! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+448! tness_clients_regression\fitness_unistats.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\fitness_unistats.pdf", 
+      printer "PDF".
+449  
+450  proc univariate data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+451     var Runtime -- Performance;
+452     histogram Runtime -- Performance / normal;
+453     probplot  Runtime -- Performance
+454               / normal (mu=est sigma=est color=red w=2);
+455     title 'Univariate Statistics of sasuser.b_fitness';
+456  run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           1.61 seconds
+      cpu time            0.95 seconds
+      
+
+457  
+458  ods pdf close;
+NOTE: ODS PDF printed 40 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\fitness_unistats.pdf.
+459  ods listing;
+460  
+461  /* 2.Scatter plot */
+462  ods pdf file =
+462! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+462! tness_clients_regression\scatter_plot.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\scatter_plot.pdf", 
+      printer "PDF".
+463  
+464  options ps=20 ls=34;
+                   --
+                   18
+ERROR 18-12: Option value for SAS option LINESIZE must be 
+             between 64 and 256.
+465  goptions reset=all gunit=pct border
+466           fontres=presentation ftext=swissb;
+467  
+468  axis1 length=50 w=2 color=blue label=(h=2) value=(h=2);
+469  axis2 length=50 w=2 color=blue label=(h=2) value=(h=2);
+470  
+471  proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+472     plot oxygen_consumption * (runtime age weight run_pulse
+473          rest_pulse maximum_pulse performance)
+474          / vaxis=axis1 haxis=axis2;
+475     symbol1 v=dot h=2 w=4 color=red;
+476     title h=5 color=green 'Plot of Oxygen Consumption by
+476! Other Variables';
+477  run;
+
+WARNING: TITLE1 is too long. Height has been reduced to 66.21 
+         pct of specified or default size.
+478  quit;
+
+NOTE: There were 31 observations read from the data set 
+      FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.41 seconds
+      cpu time            0.40 seconds
+      
+
+479  
+480  ods pdf close;
+NOTE: ODS PDF printed 7 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+      tness_clients_regression\scatter_plot.pdf.
+481  
+482  /* 3.Correlation coefficient */
+483  ods pdf file =
+483! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fi
+483! tness_clients_regression\correlation.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+      itness_clients_regression\correlation.pdf", printer "PDF".
+484  
+485  proc corr data=fitness.b_fitness rank;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is 
+      native to another host, or the file encoding does not 
+      match the session encoding. Cross Environment Data Access 
+      will be used, which might require additional CPU 
+      resources and might reduce performance.
+486     var runtime age weight run_pulse rest_pulse
+486! maximum_pulse
+487         performance;
+488     with oxygen_consumption;
+489     title 'PROC CORR: oxygen_consumption with predictor
+489! variables';
+490  run;
+
+NOTE: PROCEDURE CORR used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+491  
+492  ods pdf close;
+ERROR: File is in use, 
+       C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\F
+       itness_clients_regression\correlation.pdf.
+493  ods listing;
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 
+      27513-2414
+NOTE: The SAS System used:
+      real time           38:08.25
+      cpu time            2:21.79
+      
