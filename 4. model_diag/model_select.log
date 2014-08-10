@@ -1,0 +1,254 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+27   
+28   /* 1. Residual examination */
+29   ods listing close;
+30   ods pdf file =
+30 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4.
+30 ! model_diag\model_diag_residual.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_residual.pdf", printer "PDF".
+31   
+32   proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+33      PREDICT: model oxygen_consumption
+34                     = runtime age run_pulse maximum_pulse;
+35      plot r.*(p. runtime age run_pulse maximum_pulse);
+36      plot student.*obs. / vref=3 2 -2 -3
+37                           haxis=0 to 32 by 1;
+38      plot nqq.*student.; /**student. is residuals divided by their standard errors***/
+39      symbol v=dot;
+40      title 'PREDICT Model - Plots of Diagnostic Statistics';
+41   run;
+
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg.png.
+NOTE: Graph's name, REG, changed to REG1. REG is already used or not a valid SAS name.
+NOTE: Graph's name, REG, changed to REG1. REG is already used or not a valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg1.png.
+NOTE: Graph's name, REG, changed to REG2. REG is already used or not a valid SAS name.
+NOTE: Graph's name, REG, changed to REG2. REG is already used or not a valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg2.png.
+NOTE: Graph's name, REG, changed to REG3. REG is already used or not a valid SAS name.
+NOTE: Graph's name, REG, changed to REG3. REG is already used or not a valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg3.png.
+NOTE: Graph's name, REG, changed to REG4. REG is already used or not a valid SAS name.
+NOTE: Graph's name, REG, changed to REG4. REG is already used or not a valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg4.png.
+NOTE: Graph's name, REG, changed to REG5. REG is already used or not a valid SAS name.
+NOTE: Graph's name, REG, changed to REG5. REG is already used or not a valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg5.png.
+NOTE: Graph's name, REG, changed to REG6. REG is already used or not a valid SAS name.
+NOTE: Graph's name, REG, changed to REG6. REG is already used or not a valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD9340_IVAN_LIU_\reg6.png.
+42   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           2.58 seconds
+      cpu time            1.46 seconds
+      
+
+43   
+44   ods pdf close;
+NOTE: ODS PDF printed 10 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_residual.pdf.
+45   
+46   ods listing;
+47   
+48   /* 2.Outlier detection */
+49   ods pdf file =
+49 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4.
+49 ! model_diag\model_diag_outlier.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_outlier.pdf", printer "PDF".
+50   proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+51      PREDICT: model oxygen_consumption
+52                         = runtime age run_pulse maximum_pulse
+53                         / r influence;
+54      id name;
+55      output out=ck4outliers
+56             rstudent=rstud dffits=dfits cookd=cooksd;
+57      title;
+58   run;
+
+59   quit;
+
+NOTE: The data set WORK.CK4OUTLIERS has 31 observations and 13 variables.
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.45 seconds
+      cpu time            0.64 seconds
+      
+
+60   ods pdf close;
+NOTE: ODS PDF printed 6 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_outlier.pdf.
+61   %let numparms = 5;  /* # of predictor variables + 1 */
+62   %let numobs = 31;   /* # of observations */
+63   %let idvars = name; /* relevant identification variable(s) */
+64   
+65   data influential;
+66     set ck4outliers;
+67   
+68      cutdifts = 2*(sqrt(&numparms/&numobs));
+69      cutcookd = 4/&numobs;
+70   
+71      rstud_i = (abs(rstud)>3);
+72      dfits_i = (abs(dfits)>cutdifts);
+73      cookd_i = (cooksd>cutcookd);
+74      sum_i = rstud_i + dfits_i + cookd_i;
+75      if sum_i > 0;
+76   run;
+
+NOTE: There were 31 observations read from the data set WORK.CK4OUTLIERS.
+NOTE: The data set WORK.INFLUENTIAL has 1 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+77   /*  set the values of these macro variables, */
+78   /*  based on your data and model.            */
+79   %let numparms = 5;  /* # of predictor variables + 1 */
+80   %let numobs = 31;   /* # of observations */
+81   %let idvars = name; /* relevant identification variable(s) */
+82   
+83   data fitness.influential;
+84     set ck4outliers;
+85   
+86      cutdifts = 2*(sqrt(&numparms/&numobs));
+87      cutcookd = 4/&numobs;
+88   
+89      rstud_i = (abs(rstud)>3);
+90      dfits_i = (abs(dfits)>cutdifts);
+91      cookd_i = (cooksd>cutcookd);
+92      sum_i = rstud_i + dfits_i + cookd_i;
+93      if sum_i > 0;
+94   run;
+
+NOTE: There were 31 observations read from the data set WORK.CK4OUTLIERS.
+NOTE: The data set FITNESS.INFLUENTIAL has 1 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+95   /* 3.Collinearity */
+96   ods pdf file =
+96 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4.
+96 ! model_diag\model_diag_collinearity.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_collinearity.pdf", printer "PDF".
+97   
+98   proc reg data=reg.b_fitness;
+ERROR: Libname REG is not assigned.
+99      FULLMODL: model oxygen_consumption
+100                           =  runtime age
+ERROR: No data set open to look up variables.
+ERROR: No data set open to look up variables.
+101                             run_pulse  maximum_pulse
+ERROR: No data set open to look up variables.
+ERROR: No data set open to look up variables.
+102                           / vif collin collinoint; /*variance inflation,where vif>2 will be
+102!  considered collinearity*/
+ERROR: No data set open to look up variables.
+NOTE: The previous statement has been deleted.
+103     title 'Collinearity -- Full Model';
+104  run;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+105  quit;
+106  ods pdf close;
+NOTE: ODS PDF printed no output. 
+      (This sometimes results from failing to place a RUN statement before the ODS PDF CLOSE 
+      statement.)
+107  ods pdf file =
+107! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4.
+107! model_diag\model_diag_collinearity.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_collinearity.pdf", printer "PDF".
+108  
+109  proc reg data=reg.b_fitness;
+ERROR: Libname REG is not assigned.
+110     FULLMODL: model oxygen_consumption
+111                           =  runtime age
+ERROR: No data set open to look up variables.
+ERROR: No data set open to look up variables.
+112                             run_pulse  maximum_pulse
+ERROR: No data set open to look up variables.
+ERROR: No data set open to look up variables.
+113                           / vif collin collinoint; /*variance inflation,where vif>2 will be
+113!  considered collinearity*/
+ERROR: No data set open to look up variables.
+NOTE: The previous statement has been deleted.
+114     title 'Collinearity -- Full Model';
+115  run;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+116  quit;
+117  ods pdf close;
+NOTE: ODS PDF printed no output. 
+      (This sometimes results from failing to place a RUN statement before the ODS PDF CLOSE 
+      statement.)
+118  ods pdf file =
+118! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4.
+118! model_diag\model_diag_collinearity.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_collinearity.pdf", printer "PDF".
+119  
+120  proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+121     FULLMODL: model oxygen_consumption
+122                           =  runtime age
+123                             run_pulse  maximum_pulse
+124                           / vif collin collinoint; /*variance inflation,where vif>2 will be
+124!  considered collinearity*/
+125     title 'Collinearity -- Full Model';
+126  run;
+
+127  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.12 seconds
+      cpu time            0.40 seconds
+      
+
+128  ods pdf close;
+NOTE: ODS PDF printed 4 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\4. 
+      model_diag\model_diag_collinearity.pdf.
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           14:34.16
+      cpu time            33.71 seconds
+      
