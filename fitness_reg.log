@@ -1,0 +1,477 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+8    
+9    /* 1. Fit test (PP plot) */
+10   ods listing close;
+11   ods pdf file =
+11 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+11 ! s_unistats.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitne
+      ss_unistats.pdf", printer "PDF".
+12   
+13   proc univariate data=fitness.b_fitness;
+NOTE: Writing HTML Body file: sashtml.htm
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+14      var Runtime -- Performance;
+15      histogram Runtime -- Performance / normal;
+16      probplot  Runtime -- Performance
+17                / normal (mu=est sigma=est color=red w=2);
+18      title 'Univariate Statistics of sasuser.b_fitness';
+19   run;
+
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           3.25 seconds
+      cpu time            1.60 seconds
+      
+
+20   
+21   ods pdf close;
+NOTE: ODS PDF printed 40 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\fitnes
+      s_unistats.pdf.
+22   ods listing;
+23   
+24   /* 2.Scatter plot */
+25   ods pdf file =
+25 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\scatte
+25 ! r_plot.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\scatt
+      er_plot.pdf", printer "PDF".
+26   
+27   options ps=20 ls=34;
+                   --
+                   18
+ERROR 18-12: Option value for SAS option LINESIZE must be between 64 and 256.
+28   goptions reset=all gunit=pct border
+29            fontres=presentation ftext=swissb;
+30   
+31   axis1 length=50 w=2 color=blue label=(h=2) value=(h=2);
+32   axis2 length=50 w=2 color=blue label=(h=2) value=(h=2);
+33   
+34   proc gplot data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+35      plot oxygen_consumption * (runtime age weight run_pulse
+36           rest_pulse maximum_pulse performance)
+37           / vaxis=axis1 haxis=axis2;
+38      symbol1 v=dot h=2 w=4 color=red;
+39      title h=5 color=green 'Plot of Oxygen Consumption by Other Variables';
+40   run;
+
+WARNING: TITLE1 is too long. Height has been reduced to 66.21 pct of specified or default size.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot.png.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot1.png.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot2.png.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot3.png.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot4.png.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot5.png.
+NOTE: 1 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS Temporary 
+      Files\_TD3612_IVAN_LIU_\gplot6.png.
+41   quit;
+
+NOTE: There were 31 observations read from the data set FITNESS.B_FITNESS.
+NOTE: PROCEDURE GPLOT used (Total process time):
+      real time           0.97 seconds
+      cpu time            0.93 seconds
+      
+
+42   
+43   ods pdf close;
+NOTE: ODS PDF printed 7 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\scatte
+      r_plot.pdf.
+44   
+45   /* 3.Correlation coefficient */
+46   ods pdf file =
+46 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\correl
+46 ! ation.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\corre
+      lation.pdf", printer "PDF".
+47   
+48   proc corr data=fitness.b_fitness rank;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+49      var runtime age weight run_pulse rest_pulse maximum_pulse
+50          performance;
+51      with oxygen_consumption;
+52      title 'PROC CORR: oxygen_consumption with predictor variables';
+53   run;
+
+NOTE: PROCEDURE CORR used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+54   
+55   ods pdf close;
+NOTE: ODS PDF printed 1 page to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\correl
+      ation.pdf.
+56   ods listing;
+57   
+58   /* simple linear regression */
+59   ods listing close;
+60   ods pdf file =
+60 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+60 ! .pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_l
+      r.pdf", printer "PDF".
+61   
+62   proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+63      model oxygen_consumption=performance;
+64      title 'Simple Linear Regression of Oxygen Consumption '
+65            'and Performance';
+66   run;
+
+67   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.08 seconds
+      cpu time            0.29 seconds
+      
+
+68   
+69   ods pdf close;
+NOTE: ODS PDF printed 4 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\sim_lr
+      .pdf.
+70   
+71   /* 2.Pridiction and confidence interval */
+72   ods pdf file =
+72 ! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\prid_c
+72 ! onf.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clients_regression\prid_
+      conf.pdf", printer "PDF".
+73   
+74   data need_predictions;
+75      input performance @@;
+76      datalines;
+
+NOTE: SAS went to a new line when INPUT statement reached past the end of a line.
+NOTE: The data set WORK.NEED_PREDICTIONS has 5 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+78   ;
+79   run;
+80   
+81   data predoxy;
+82      set fitness.b_fitness
+83          need_predictions;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to another host, or the 
+      file encoding does not match the session encoding. Cross Environment Data Access will be 
+      used, which might require additional CPU resources and might reduce performance.
+84   run;
+
+NOTE: There were 31 observations read from the data set FITNESS.B_FITNESS.
+NOTE: There were 5 observations read from the data set WORK.NEED_PREDICTIONS.
+NOTE: The data set WORK.PREDOXY has 36 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+85   
+86   proc reg data=predoxy;
+87      model oxygen_consumption=performance / p;
+88      id performance;
+89      title 'Oxygen_Consumption=Performance with Predicted Values';
+90   run;
+
+91   quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.07 seconds
+      cpu time            0.43 seconds
+      
+
+92   
+93   
+94   options ps=50 ls=76;
+95   goptions reset=all fontres=presentation ftext=swissb htext=1.5;
+96   
+97   proc reg data=predoxy;
+98      model oxygen_consumption=performance / clm cli alpha=.05;
+99      id name performance;
+100     plot oxygen_consumption*performance / conf pred;
+101     symbol1 c=red v=dot;
+102     symbol2 c=red;
+103     symbol3 c=blue;
+104     symbol4 c=blue;
+105     symbol5 c=green;
+106     symbol6 c=green;
+107     title;
+108  run;
+
+NOTE: 5 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg.png.
+109  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.94 seconds
+      cpu time            0.45 seconds
+      
+
+110  ods pdf close;
+NOTE: ODS PDF printed 13 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+      s_regression\prid_conf.pdf.
+111  ods listing;
+112  
+113  /* Model selection by all_reg, forward, backward and stepwise */
+114  ods listing close;
+115  ods pdf file =
+115! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+115! s_regression\model_select.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clien
+      ts_regression\model_select.pdf", printer "PDF".
+116  
+117  proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to 
+      another host, or the file encoding does not match the session 
+      encoding. Cross Environment Data Access will be used, which might 
+      require additional CPU resources and might reduce performance.
+118     title h=2 'Best=4 Models Using All Regression Option';
+119  
+120     ALL_REG: model oxygen_consumption
+121                      = performance runtime age weight
+122                        run_pulse rest_pulse maximum_pulse
+123              / selection=rsquare adjrsq cp best=4;
+124     plot cp.*np. /
+125          nomodel nostat
+126          vaxis=0 to 30 by 5
+127          haxis=2 to 7 by 1 /* p=0,p=1 do not add information */
+128          cmallows=red
+129          chocking=blue;
+130     symbol v=plus color=green h=2;
+131  
+132     title 'Stepwise Regression Methods';
+133  
+134     FORWARD: model oxygen_consumption
+135                      = performance runtime age weight
+136                        run_pulse rest_pulse maximum_pulse
+137                      / selection=forward;
+138     BACKWARD: model oxygen_consumption
+139                      = performance runtime age weight
+140                        run_pulse rest_pulse maximum_pulse
+141                      / selection=backward;
+142     STEPWISE: model oxygen_consumption
+143                      = performance runtime age weight
+144                        run_pulse rest_pulse maximum_pulse
+145                      / selection=stepwise;
+146  
+147  
+148  run;
+
+NOTE: Graph's name, REG, changed to REG1. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG1. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg1.png.
+149  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           3.07 seconds
+      cpu time            1.28 seconds
+      
+
+150  
+151  ods pdf close;
+NOTE: ODS PDF printed 20 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+      s_regression\model_select.pdf.
+152  ods listing;
+153  
+154  /* 1. Residual examination */
+155  ods listing close;
+156  ods pdf file =
+156! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+156! s_regression\model_diag_residual.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clien
+      ts_regression\model_diag_residual.pdf", printer "PDF".
+157  
+158  proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to 
+      another host, or the file encoding does not match the session 
+      encoding. Cross Environment Data Access will be used, which might 
+      require additional CPU resources and might reduce performance.
+159     PREDICT: model oxygen_consumption
+160                    = runtime age run_pulse maximum_pulse;
+161     plot r.*(p. runtime age run_pulse maximum_pulse);
+162     plot student.*obs. / vref=3 2 -2 -3
+163                          haxis=0 to 32 by 1;
+164     plot nqq.*student.; /**student. is residuals divided by their
+164! standard errors***/
+165     symbol v=dot;
+166     title 'PREDICT Model - Plots of Diagnostic Statistics';
+167  run;
+
+NOTE: Graph's name, REG, changed to REG2. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG2. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg2.png.
+NOTE: Graph's name, REG, changed to REG3. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG3. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg3.png.
+NOTE: Graph's name, REG, changed to REG4. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG4. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg4.png.
+NOTE: Graph's name, REG, changed to REG5. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG5. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg5.png.
+NOTE: Graph's name, REG, changed to REG6. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG6. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg6.png.
+NOTE: Graph's name, REG, changed to REG7. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG7. REG is already used or not a 
+      valid SAS name.
+NOTE: 3 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg7.png.
+NOTE: Graph's name, REG, changed to REG8. REG is already used or not a 
+      valid SAS name.
+NOTE: Graph's name, REG, changed to REG8. REG is already used or not a 
+      valid SAS name.
+NOTE: 2 records written to C:\Users\IVAN~1.LIU\AppData\Local\Temp\SAS 
+      Temporary Files\_TD3612_IVAN_LIU_\reg8.png.
+168  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           1.81 seconds
+      cpu time            1.32 seconds
+      
+
+169  
+170  ods pdf close;
+NOTE: ODS PDF printed 10 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+      s_regression\model_diag_residual.pdf.
+171  
+172  /* 2.Outlier detection */
+173  ods pdf file =
+173! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+173! s_regression\model_diag_outlier.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clien
+      ts_regression\model_diag_outlier.pdf", printer "PDF".
+174  proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to 
+      another host, or the file encoding does not match the session 
+      encoding. Cross Environment Data Access will be used, which might 
+      require additional CPU resources and might reduce performance.
+175     PREDICT: model oxygen_consumption
+176                        = runtime age run_pulse maximum_pulse
+177                        / r influence;
+178     id name;
+179     output out=ck4outliers
+180            rstudent=rstud dffits=dfits cookd=cooksd;
+181     title;
+182  run;
+
+183  quit;
+
+NOTE: The data set WORK.CK4OUTLIERS has 31 observations and 13 variables.
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.80 seconds
+      cpu time            0.37 seconds
+      
+
+184  
+185  ods pdf close;
+NOTE: ODS PDF printed 6 pages to 
+      C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+      s_regression\model_diag_outlier.pdf.
+186  /*  set the values of these macro variables, */
+187  /*  based on your data and model.            */
+188  %let numparms = 5;  /* # of predictor variables + 1 */
+189  %let numobs = 31;   /* # of observations */
+190  %let idvars = name; /* relevant identification variable(s) */
+191  
+192  data fitness.influential;
+193    set ck4outliers;
+194  
+195     cutdifts = 2*(sqrt(&numparms/&numobs));
+196     cutcookd = 4/&numobs;
+197  
+198     rstud_i = (abs(rstud)>3);
+199     dfits_i = (abs(dfits)>cutdifts);
+200     cookd_i = (cooksd>cutcookd);
+201     sum_i = rstud_i + dfits_i + cookd_i;
+202     if sum_i > 0;
+203  run;
+
+NOTE: There were 31 observations read from the data set WORK.CK4OUTLIERS.
+NOTE: The data set FITNESS.INFLUENTIAL has 1 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+204  
+205  /* 3.Collinearity */
+206  ods pdf file =
+206! 'C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_client
+206! s_regression\model_diag_collinearity.pdf';
+NOTE: Writing ODS PDF output to DISK destination 
+      "C:\Users\Ivan.Liuyanfeng\Desktop\Data_Mining_Work_Space\Fitness_clien
+      ts_regression\model_diag_collinearity.pdf", printer "PDF".
+207  
+208  proc reg data=fitness.b_fitness;
+NOTE: Data file FITNESS.B_FITNESS.DATA is in a format that is native to 
+      another host, or the file encoding does not match the session 
+      encoding. Cross Environment Data Access will be used, which might 
+      require additional CPU resources and might reduce performance.
+209     FULLMODL: model oxygen_consumption
+210                           =  runtime age
+211                             run_pulse  maximum_pulse
+212                           / vif collin collinoint; /*variance
+212! inflation,where vif>2 will be considered collinearity*/
+213     title 'Collinearity -- Full Model';
+214  run;
+
+215  quit;
+
+NOTE: PROCEDURE REG used (Total process time):
+      real time           0.74 seconds
+      cpu time            0.28 seconds
+      
